@@ -1,5 +1,4 @@
 ﻿namespace EquipmentCalculator;
-using System;
 
 class Program
 {

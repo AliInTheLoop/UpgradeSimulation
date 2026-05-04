@@ -2,7 +2,7 @@ namespace EquipmentCalculator.Anvil;
 
 public class AnvilSystem
 {
-    internal int CountAnvilFails { get; set; } = 0;
+   private int CountAnvilFails { get; set; } = 0;
     
     internal Dictionary<int, int> Guaranteed = new Dictionary<int, int>()
     {
