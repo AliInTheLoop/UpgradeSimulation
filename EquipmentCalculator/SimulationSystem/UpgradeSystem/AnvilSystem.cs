@@ -1,4 +1,4 @@
-namespace EquipmentCalculator.Anvil;
+namespace EquipmentCalculator.SimulationSystem.UpgradeSystem;
 
 public class AnvilSystem
 {
