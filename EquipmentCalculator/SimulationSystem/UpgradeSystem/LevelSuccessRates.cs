@@ -1,9 +1,9 @@
 namespace EquipmentCalculator.SimulationSystem.UpgradeSystem;
 
-public static class CurLevelAndSucRates
+public static class LevelSuccessRates
 {
-    // Each level and there corresponded rates they need to level up
-    internal static Dictionary<int, double> CurLevelAndSuccessRate = new Dictionary<int, double>()
+    // Level | % needed
+    internal static Dictionary<int, double> UpgradeInformation = new Dictionary<int, double>()
     {
         { 0, 70.00 }, { 1, 60.00 }, 
         { 2, 40.00 }, { 3, 20.00 },
