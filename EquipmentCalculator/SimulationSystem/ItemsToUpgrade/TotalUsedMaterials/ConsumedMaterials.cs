@@ -10,7 +10,7 @@ public class ConsumedMaterials
 
     public override string ToString()
     {
-        return "––– Consumed Materials\n" +
+        return "––– Consumed Materials –––\n" +
                $"Attempts: {TotalAttempts}\n" +
                $"Restoration Rolls: {TotalRegRolls}\n" +
                $"Crystals: {TotalPrestineCrystals}\n" +

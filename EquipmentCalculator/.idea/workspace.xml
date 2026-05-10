@@ -11,8 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0d67e2d-48c9-4002-b67a-3ea725ca5c23" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MaterialsToLevelUp/Materials.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MaterialsToLevelUp/Materials.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimulationSystem/EquipmentSystem/EquipLvl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SimulationSystem/EquipmentSystem/EquipLvl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +22,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Anvil/AnvilSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EquipmentSystem/EquipmentLevel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MaterialsToLevelUp/Materials.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SimulationSystem/EquipmentSystem/EquipLvl.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,
@@ -71,6 +68,7 @@
       <workItem from="1777901501530" duration="232000" />
       <workItem from="1777901811245" duration="20000" />
       <workItem from="1777976685184" duration="562000" />
+      <workItem from="1778348277525" duration="29000" />
     </task>
     <servers />
   </component>
