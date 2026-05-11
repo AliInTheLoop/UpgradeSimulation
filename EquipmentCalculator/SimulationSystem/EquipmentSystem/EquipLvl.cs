@@ -5,80 +5,54 @@ using UpgradeSystem;
 
 public class EquipLvl
 {
-    internal int CurrentLevel { get; set; }
+    private int CurrentLevel { get; set; }
     private readonly Random _rand = new Random();
-    internal ConsumedMaterials Sum { get; set; }
+    ConsumedMaterials sum = new ConsumedMaterials();
 
-    internal EquipLvl(int attempts, int regRolls, int crystal, int ratesUsed, int silverCost)
+    private EquipLvl(int currentLevel)
     {
-        Sum = new ConsumedMaterials()
-        {
-            TotalAttempts = attempts,
-            TotalRegRolls = regRolls,
-            TotalPrestineCrystals = crystal,
-            TotalRatesUsed = ratesUsed,
-            TotalSilverCost = silverCost
-        };
+        CurrentLevel = currentLevel;
     }
-    
-    internal EquipLvl() : this(0,0,0,0,0)
+
+    internal EquipLvl() : this(0)
     {
         
     }
     
-
-
-    internal ConsumedMaterials UpgradeSimulation(int currentLevel)
+    internal ConsumedMaterials UpgradeSimulation()
     {
-        CurrentLevel = currentLevel;
-        ConsumedMaterials sum = new ConsumedMaterials();
         
         while (CurrentLevel < 10)
         {
             double roll = _rand.NextDouble() * 100;
+            // each attempt cost 200 rolls and 500 silver
+            sum.ConsumedResources(200,500);
             
             if (LevelSuccessRates.UpgradeInformation.TryGetValue(CurrentLevel, out  double currentChance))
             {
-                Console.WriteLine($"Current Level: {CurrentLevel}");
-                Console.WriteLine($"Current Attempt: {Attempts}");
-                Console.WriteLine($"Roll: {roll:F2}");
-                Console.WriteLine($"For Success: {currentChance}% or less.");
-                
                 if (roll < currentChance)
                 {
-                    sum.TotalRegRolls++;
-                    sum.TotalPrestineCrystals++;
-                    sum.TotalRatesUsed++;
-                    sum.TotalSilverCost++;
-                    Console.WriteLine($"Lvl UP: {++CurrentLevel}\n");
+                    ++CurrentLevel;
                 }
                 else
                 {
                     if (CurrentLevel < 1)
                     {
                         CurrentLevel = 0;
-                        sum.TotalRegRolls++;
-                        sum.TotalPrestineCrystals++;
-                        sum.TotalRatesUsed++;
-                        sum.TotalSilverCost++;
                     }
                     else
                     {
-                        sum.TotalRegRolls++;
-                        sum.TotalPrestineCrystals++;
-                        sum.TotalRatesUsed++;
-                        sum.TotalSilverCost++;
-                        Console.WriteLine($"Fail Lvl down: {--CurrentLevel}\n");
+                        --CurrentLevel;
                     }
-                    if (Attempts > 99)
+                    // TODO: Remove this limit for real simulation or increase it to 1 000 000
+                    if (sum.TotalAttempts > 9)
                     {
                         break;
                     }
                 }
-                Attempts++;
             }
         }
-
-        return new ConsumedMaterials();
+        // return the accumulated materials ( Consumed.Materials.ToString handles the formatting)
+        return sum;
     }
 }

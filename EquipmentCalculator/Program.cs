@@ -8,8 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        EquipLvl lvl = new EquipLvl();
-        Console.WriteLine(lvl.UpgradeSimulation(0));
-        
+        ConsumedMaterials result = new EquipLvl().UpgradeSimulation();
+        Console.WriteLine($"{result}");
     }
 }
