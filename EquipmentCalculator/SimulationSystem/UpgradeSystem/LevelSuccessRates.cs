@@ -3,7 +3,7 @@ namespace EquipmentCalculator.SimulationSystem.UpgradeSystem;
 public static class LevelSuccessRates
 {
     // Level | % needed
-    internal static Dictionary<int, double> UpgradeInformation = new Dictionary<int, double>()
+    internal static Dictionary<int, double> UpgradeInformation = new()
     {
         { 0, 70.00 }, { 1, 60.00 }, 
         { 2, 40.00 }, { 3, 20.00 },

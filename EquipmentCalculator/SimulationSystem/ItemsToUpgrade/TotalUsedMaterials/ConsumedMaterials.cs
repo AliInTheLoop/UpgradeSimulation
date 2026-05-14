@@ -1,6 +1,7 @@
+using EquipmentCalculator.SimulationSystem.UpgradeSystem;
 namespace EquipmentCalculator.SimulationSystem.ItemsToUpgrade.TotalUsedMaterials;
 
-public class ConsumedMaterials
+public class ConsumedMaterials : AnvilSystem
 {
     internal int TotalAttempts { get; set; }
     internal int TotalRegRolls { get; set; }
