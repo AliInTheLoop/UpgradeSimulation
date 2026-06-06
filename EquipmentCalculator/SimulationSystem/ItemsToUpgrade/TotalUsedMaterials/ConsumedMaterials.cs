@@ -1,13 +1,12 @@
-using EquipmentCalculator.SimulationSystem.UpgradeSystem;
 namespace EquipmentCalculator.SimulationSystem.ItemsToUpgrade.TotalUsedMaterials;
 
-public class ConsumedMaterials : AnvilSystem
+public class ConsumedMaterials
 {
-    internal int TotalAttempts { get; set; }
-    internal int TotalRegRolls { get; set; }
-    internal int TotalPrestineCrystals { get; set; }
-    internal int TotalRatesUsed { get; set; }
-    internal int TotalSilverCost { get; set; }
+    internal int TotalAttempts {  get; private set; }
+    internal int TotalRegRolls { get; private set; }
+    internal int TotalPrestineCrystals { get; private set; }
+    internal int TotalRatesUsed { get; private set; }
+    internal int TotalSilverCost { get; private set; }
 
     internal ConsumedMaterials(int attempts, int regRolls, int crystal, int ratesUsed, int silverCost)
     {

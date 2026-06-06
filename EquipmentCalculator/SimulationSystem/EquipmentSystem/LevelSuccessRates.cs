@@ -1,6 +1,6 @@
-namespace EquipmentCalculator.SimulationSystem.UpgradeSystem;
+namespace EquipmentCalculator.SimulationSystem.EquipmentSystem;
 
-public static class LevelSuccessRates
+public class LevelSuccessRates
 {
     // Level | % needed
     internal static Dictionary<int, double> UpgradeInformation = new()
