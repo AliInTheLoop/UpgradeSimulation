@@ -1,9 +1,9 @@
 namespace EquipmentCalculator.SimulationSystem.EquipmentSystem;
 
-public class LevelSuccessRates
+public static class LevelSuccessRates
 {
     // Level | % needed
-    internal static Dictionary<int, double> UpgradeInformation = new()
+    internal static readonly Dictionary<int, double> UpgradeInformation = new()
     {
         { 0, 70.00 }, { 1, 60.00 }, 
         { 2, 40.00 }, { 3, 20.00 },

@@ -2,48 +2,49 @@ namespace EquipmentCalculator.SimulationSystem.UpgradeSystem.LevelManager;
 using EquipmentSystem;
 using ItemsToUpgrade.TotalUsedMaterials;
 
-public class Leveling : Anvil
+
+public class Leveling
 {
-    private int _currentLevel;
+    // In Leveling.cs
+    private  int CurrentLevel { get; set; }
     private readonly Random _rand = new();
     private  readonly ConsumedMaterials _count = new(); // create a new instance  of the class.
 
-    private Leveling(int currentLevel)
+    internal Leveling(int currentLevel)
     {
-        _currentLevel = currentLevel;
+        CurrentLevel = currentLevel;
     }
 
     internal Leveling() : this(0){}
+    
 
     internal ConsumedMaterials EquipmentLeveling() 
     {
-        while (_currentLevel <= 10)
+        while (CurrentLevel <= 10)
         {
             _count.ConsumedResources(200,200); // add 200 per try to the result for silver and regRolls
-            double roll = _rand.NextDouble() * 100;
+            double roll = _rand.NextDouble() * 100; // roll between 0.1 => 99.9
 
-            if (LevelSuccessRates.UpgradeInformation.TryGetValue(_currentLevel, out double succOrFail))
+            if (LevelSuccessRates.UpgradeInformation.TryGetValue(CurrentLevel, out double succOrFail))
             {
-
                 Console.WriteLine($"Trie: {_count.TotalAttempts}\n" +
-                                  $"Current Level: {_currentLevel}\n" +
+                                  $"Current Level: {CurrentLevel}\n" +
                                   $"Roll: {roll:F2} | Rates: {succOrFail}");
-                
                 
                 if (roll < succOrFail)
                 {
-                    Console.WriteLine($"Level after success: {++_currentLevel}");
+                    Console.WriteLine($"Level after success: {++CurrentLevel}");
                 }
                 else
                 {
-                    if (roll > succOrFail && _currentLevel == 0)
+                    if (roll > succOrFail && CurrentLevel == 0)
                     {
-                        _currentLevel = 0;
-                        Console.WriteLine($"Fail {_currentLevel}");
+                        CurrentLevel = 0;
+                        Console.WriteLine($"Fail {CurrentLevel}");
                     }
                     else
                     {
-                        Console.WriteLine($"Level after fail: {--_currentLevel}");
+                        Console.WriteLine($"Level after fail: {--CurrentLevel}");
                     }
                 }
                 Console.WriteLine();

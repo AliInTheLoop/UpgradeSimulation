@@ -3,10 +3,10 @@ namespace EquipmentCalculator.SimulationSystem.ItemsToUpgrade.TotalUsedMaterials
 public class ConsumedMaterials
 {
     internal int TotalAttempts {  get; private set; }
-    internal int TotalRegRolls { get; private set; }
-    internal int TotalPrestineCrystals { get; private set; }
-    internal int TotalRatesUsed { get; private set; }
-    internal int TotalSilverCost { get; private set; }
+    private int TotalRegRolls { get; set; }
+    private int TotalPrestineCrystals { get; set; }
+    private int TotalRatesUsed { get; set; }
+    private int TotalSilverCost { get; set; }
 
     internal ConsumedMaterials(int attempts, int regRolls, int crystal, int ratesUsed, int silverCost)
     {

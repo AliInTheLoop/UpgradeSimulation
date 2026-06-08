@@ -8,6 +8,4 @@ public static class Materials
     internal static int PrestineBlackCrystals { get; set; } = 1;    // Item required to upgrade the equipment
     // if it fails it has a 50%(assumption because there is no information in the game about it) chance not losing a level
     internal static double RestorationRollsPerTry { get; set; } = 0.5;
-    
-    
 }

@@ -1,4 +1,4 @@
-namespace EquipmentCalculator.SimulationSystem.UpgradeSystem;
+namespace EquipmentCalculator.SimulationSystem.UpgradeSystem.FailStackManager;
 
 /*
     The point of the Anvil system is that, if a certain level has reached max fail attempts, the next attempt will be
@@ -9,19 +9,9 @@ public class Anvil
 {
     internal int Level { get; set; }
     
-    internal Dictionary<int, int> MaxAttemptsToLvlUp = new()
+    internal readonly Dictionary<int, int> MaxAttemptsToLvlUp = new()
     {
         // current level | attempts needed for guaranteed level up 
         { 2, 2 }, { 3, 3 }, { 4, 5 }, { 5, 8 }, { 6, 10 }, { 7, 17 }, { 8, 50 }, { 9, 100 }
     };
-
-    private Anvil(int level)
-    {
-        Level = level;
-    }
-
-    internal Anvil() : this(0)
-    {
-        
-    }
 }
