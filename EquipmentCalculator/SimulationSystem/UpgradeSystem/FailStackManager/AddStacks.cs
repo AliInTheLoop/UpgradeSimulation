@@ -6,10 +6,30 @@ public class AddStacks : Anvil
 
     internal void StackCounter()
     {
-        if (!_countAnvil.ContainsKey(Level))
+        
+        int stackNeeded = MaxAttemptsToLvlUp[CurrentLevel];
+
+        // if there is no level in the dictionary 
+        if (!_countAnvil.ContainsKey(CurrentLevel))
         {
-            _countAnvil[Level] = 0;
+            _countAnvil[CurrentLevel] = 0;
+            Console.WriteLine($"Added Level {CurrentLevel} to the stack Dictionary");
         }
-        _countAnvil[Level]++;
+        else
+        {
+            // Add one stack if it is less or equal then the current level in the dictionary
+            if (_countAnvil[CurrentLevel] <= stackNeeded)
+            {
+                _countAnvil[CurrentLevel]++;
+                Console.WriteLine($"current stack: {_countAnvil[CurrentLevel]}/{stackNeeded}");
+            }
+            else
+            {
+                CurrentLevel++;
+
+                // set the stack to 0 after Level up.
+                _countAnvil[CurrentLevel] = 0;
+            }
+        }
     }
 }

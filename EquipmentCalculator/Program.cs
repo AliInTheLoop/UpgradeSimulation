@@ -2,7 +2,6 @@
 
 namespace EquipmentCalculator;
 using SimulationSystem.UpgradeSystem.LevelManager;
-using SimulationSystem;
 
 class Program
 {
