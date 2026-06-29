@@ -1,5 +1,8 @@
+
+
 namespace EquipmentCalculator.SimulationSystem.UpgradeSystem.FailStackManager;
 using EquipmentSystem;
+
 /*
     The point of the Anvil system is that, if a certain level has reached max fail attempts, the next attempt will be
     guaranteed to level up. It will remove then the accumulated fail stack for the corresponded level only.
@@ -7,10 +10,11 @@ using EquipmentSystem;
 */
 public class Anvil
 {
-    private readonly Random _rand = new();
     internal int CurrentLevel { get; set; }
+    private readonly Random _roll = new ();
+    private readonly AddStacks _counter = new();
 
-    internal readonly Dictionary<int, int> MaxAttemptsToLvlUp = new()
+    internal static readonly Dictionary<int, int> MaxAttemptsToLvlUp = new()
     {
         // current level | attempts needed for guaranteed level up 
         {0,0}, {1,0},{ 2, 2 }, { 3, 3 }, { 4, 5 }, { 5, 8 }, { 6, 10 }, { 7, 17 }, { 8, 50 }, { 9, 100 }
@@ -20,22 +24,28 @@ public class Anvil
     {
         if (LevelSuccessRates.UpgradeInformation.TryGetValue(CurrentLevel, out double chance))
         {
-            double roll = _rand.NextDouble() * 100;
+            double rand = _roll.NextDouble() * 100;
 
-            Console.WriteLine($"Random number : {roll:F2}\nChance needed: {chance}");
-            if (roll < chance)
-            {
-                Console.WriteLine($"Level after success: {++CurrentLevel}");
+            Console.WriteLine($"Current Level: {CurrentLevel}\nRandom number : {rand:F2} | Chance needed: {chance}\n");
+            if (rand < chance)
+            {     
+                Console.WriteLine($"Success! Current Level: {++CurrentLevel}\n");
             }
             else
             {
-                if (CurrentLevel == 0) Console.WriteLine($"level 0 check: {CurrentLevel = 0}");
-                else Console.WriteLine($"Level after fail: " + --CurrentLevel);
-
-                return false;
+                if (CurrentLevel == 0)
+                {
+                    CurrentLevel = 0; //  to make sure it will not drop below 0.
+                    Console.WriteLine($"Current Level 0! Show: {CurrentLevel}");
+                }
+                else
+                {
+                    Console.WriteLine(!_counter.AddFails(CurrentLevel)
+                        ? $"Stack up: Level down {--CurrentLevel}"
+                        : $"Stack full! Level up {++CurrentLevel}");
+                }
             }
         }
-
         return true;
     }
 }

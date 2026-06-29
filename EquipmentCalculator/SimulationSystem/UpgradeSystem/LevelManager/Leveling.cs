@@ -25,12 +25,11 @@ public class Leveling
         while (CurrentLevel <= 10)
         {
             _count.ConsumedResources(200,200); // add 200 per try to the result for silver and regRolls
-
-            _stacks.StackCounter();
+            
             if (_anvil.GetRandomNumber())
             {
                 Console.WriteLine();
-                if (_count.TotalAttempts >= 10) break;
+                if (_count.TotalAttempts >= 20) break;
             }
         }
         return _count;
