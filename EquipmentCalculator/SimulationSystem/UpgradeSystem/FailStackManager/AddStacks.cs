@@ -1,30 +1,25 @@
 namespace EquipmentCalculator.SimulationSystem.UpgradeSystem.FailStackManager;
 
-
 public class AddStacks
 {
     private readonly Dictionary<int, int> _countAnvil = new();
-
+    
     internal bool AddFails(int currentLevel)
     {
         int stackNeeded = Anvil.MaxAttemptsToLvlUp[currentLevel]; // store the rules of the dictionary MaxAttempts 
 
-        if(!_countAnvil.ContainsKey(currentLevel))
-        {
-            _countAnvil[currentLevel] = 0;
-            Console.WriteLine($"Add rule for Level {currentLevel}");
-        }
-        else
+        _countAnvil.TryAdd(currentLevel, 0);
+        Console.WriteLine($"[Added Rule: Level {currentLevel}]");
+        
+        if (_countAnvil[currentLevel] < stackNeeded)
         {
             _countAnvil[currentLevel]++;
-            Console.WriteLine($"Current stack for level {currentLevel}: {_countAnvil[currentLevel]}/{stackNeeded}");
-            
-            if(_countAnvil[currentLevel] >= stackNeeded)
-            {
-                _countAnvil[currentLevel] = 0;
-                return true;
-            }
+            Console.WriteLine($"[Stack Counter] Level:{currentLevel} " +
+                              $"| Stack: {_countAnvil[currentLevel]}/{stackNeeded}");
+            return false;
         }
-        return false;
+        
+        _countAnvil[currentLevel] = 0;
+        return true;
     }
 }
