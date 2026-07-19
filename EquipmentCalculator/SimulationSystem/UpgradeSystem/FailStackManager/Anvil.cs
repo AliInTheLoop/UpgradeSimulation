@@ -1,4 +1,6 @@
 namespace EquipmentCalculator.SimulationSystem.UpgradeSystem.FailStackManager;
+
+using EquipmentCalculator.SimulationSystem.ItemsToUpgrade.ForASaverEnchant;
 using EquipmentSystem;
 
 
@@ -15,19 +17,21 @@ public class Anvil
 
     internal static readonly Dictionary<int, int> MaxAttemptsToLvlUp = new()
     {
-        // current level | attempts needed for guaranteed level up 
+        // current level | attempts needed for guaranteed level up
         {0,0}, {1,0},{ 2, 2 }, { 3, 3 }, { 4, 5 }, { 5, 8 }, { 6, 10 }, { 7, 17 }, { 8, 50 }, { 9, 100 }
     };
-    
+
 
     internal bool GetRandomNumber()
     {
         if (LevelSuccessRates.UpgradeInformation.TryGetValue(CurrentLevel, out double chance))
         {
+            // Argument value 2 100% successRate.1 for 50%.
+            double boostedChance = chance * Materials.SuccessBooster(2);
             double rand = _roll.NextDouble() * 100;
-            Console.WriteLine($"Current Level: {CurrentLevel}\nRandom number : {rand:F2} | Chance needed: {chance}");
-            
-            if (rand < chance)
+            Console.WriteLine($"Current Level: {CurrentLevel}\nRandom number : {rand:F2} | Chance needed: {chance} | Boosted Chance: {boostedChance}");
+
+            if (rand < boostedChance)
             {
                 Console.WriteLine($"[Success]: {++CurrentLevel}");
             }
