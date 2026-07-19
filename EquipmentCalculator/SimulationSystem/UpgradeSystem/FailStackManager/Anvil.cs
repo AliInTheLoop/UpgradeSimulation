@@ -22,12 +22,13 @@ public class Anvil
     };
 
 
-    internal bool GetRandomNumber()
+    internal bool GetRandomNumber(int akhram)
     {
+        
         if (LevelSuccessRates.UpgradeInformation.TryGetValue(CurrentLevel, out double chance))
         {
             // Argument value 2 100% successRate.1 for 50%.
-            double boostedChance = chance * Materials.SuccessBooster(2);
+            double boostedChance = chance * Materials.SuccessBooster(akhram);
             double rand = _roll.NextDouble() * 100;
             Console.WriteLine($"Current Level: {CurrentLevel}\nRandom number : {rand:F2} | Chance needed: {chance} | Boosted Chance: {boostedChance}");
 

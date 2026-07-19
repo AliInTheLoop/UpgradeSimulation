@@ -10,9 +10,8 @@ class Program
     {
         Console.WriteLine("Choose your Akhram: (50 % type 1 for 100% type 2)");
         int getAkhram = int.Parse(Console.ReadLine() ?? string.Empty);
-        double getValue = Materials.SuccessBooster(getAkhram);
 
-        ConsumedMaterials level = new Leveling().EquipmentLeveling(getValue);
+        ConsumedMaterials level = new Leveling().EquipmentLeveling(getAkhram);
         Console.WriteLine(level);
     }
 }

@@ -18,14 +18,14 @@ public class Leveling
     internal Leveling() : this(0){}
 
 
-    internal ConsumedMaterials EquipmentLeveling(double akhram)
+    internal ConsumedMaterials EquipmentLeveling(int akhram)
     {
         while (CurrentLevel <= 10)
         {
             _count.ConsumedResources(200,200); // add 200 per try to the result for silver and regRolls
 
 
-            if (_anvil.GetRandomNumber())
+            if (_anvil.GetRandomNumber(akhram))
             {
                 Console.WriteLine();
                 if (_count.TotalAttempts >= 20) break;
